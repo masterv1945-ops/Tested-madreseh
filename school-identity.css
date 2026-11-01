@@ -1,0 +1,113 @@
+/* مدرسهٔ من — school-identity.css
+   هویت بصری مدرسه: دفتر خط‌دار با حاشیهٔ قرمز، تخته سیاه با قاب چوبی، برگهٔ کاغذ با چسب، یادداشت‌های رنگی.
+   بعد از student-look.css (و در student.html به‌تنهایی) بارگذاری می‌شود. */
+@import url('https://fonts.googleapis.com/css2?family=Lalezar&display=swap');
+
+:root{--school-font:"Lalezar","Vazirmatn",Tahoma,sans-serif;--margin:#e05a5a;--wood:#a9743f;--chalk:#f4f1e6;--board1:#1f6a62;--board2:#154a45;--ruled:rgba(70,130,180,.17);
+  --bg:#fbf6e9;--surface:#fffdf7;--surface2:#f6efdc;--line:#e8dcc0;--input-bg:#fffdf9;--input-line:#e2d6b8;--hover:rgba(224,170,40,.13)}
+html[data-mode="dark"]{--ruled:rgba(255,255,255,.07);--margin:#d96a6a;
+  --bg:#102421;--surface:#1a3532;--surface2:#21423e;--line:#2f524d;--input-bg:#173431;--input-line:#34605a;--hover:rgba(255,255,255,.07)}
+html{background:var(--bg)!important}
+body{background:transparent!important}
+
+/* صفحه = دفتر خط‌دار (حالت تاریک = تخته سیاه) */
+body::before{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;
+  background:linear-gradient(to left,transparent 0 56px,var(--margin) 56px 58px,transparent 58px),
+             repeating-linear-gradient(to bottom,transparent 0 33px,var(--ruled) 33px 34px),
+             radial-gradient(50rem 24rem at 0% 0%,rgba(255,206,40,.10),transparent 60%)!important}
+
+/* سربرگ = تخته سیاه با قاب چوبی و ناودان گچ */
+.top,.topbar{background:radial-gradient(18rem 7rem at 12% 0%,rgba(255,255,255,.13),transparent 70%),
+   radial-gradient(12rem 4rem at 82% 100%,rgba(255,255,255,.09),transparent 70%),
+   repeating-linear-gradient(98deg,rgba(255,255,255,.035) 0 3px,transparent 3px 11px),
+   linear-gradient(180deg,var(--board1),var(--board2))!important;
+   border-bottom:7px solid var(--wood)!important;border-radius:0 0 18px 18px!important;color:var(--chalk)!important;
+   box-shadow:0 10px 0 -3px rgba(0,0,0,.10),0 14px 26px -12px rgba(0,0,0,.45)!important;animation:none!important}
+.top::after,.topbar::after{content:""!important;position:absolute!important;inset:auto!important;left:20px;bottom:-1px;width:118px;height:6px;border-radius:3px 3px 0 0;
+   background:linear-gradient(90deg,#fff 0 28%,transparent 28% 36%,#f9d56e 36% 62%,transparent 62% 70%,#f4a6a6 70%)!important;transform:none!important;animation:none!important;opacity:.95}
+.brand,.top-title{font-family:var(--school-font)!important;font-weight:400!important;color:var(--chalk)!important;text-shadow:0 0 8px rgba(255,255,255,.28)!important;letter-spacing:0!important}
+.brand::before,.top-title::before{content:"🏫 "}
+.top .logout,.top .smallbtn,.topbar .manager-name,.iconbtn{background:rgba(255,255,255,.14)!important;border:1px dashed rgba(244,241,230,.45)!important;color:var(--chalk)!important}
+
+/* عنوان‌ها = ماژیک هایلایت */
+.page-title,.title,.heading,.section-head h3{font-family:var(--school-font)!important;font-weight:400!important;font-size:26px!important;display:inline-block;padding:0 8px!important;
+   background:linear-gradient(transparent 60%,rgba(255,206,40,.6) 60% 92%,transparent 92%)!important}
+html[data-mode="dark"] .page-title,html[data-mode="dark"] .title,html[data-mode="dark"] .heading,html[data-mode="dark"] .section-head h3{background:linear-gradient(transparent 60%,rgba(255,206,40,.28) 60% 92%,transparent 92%)!important}
+
+/* کارت‌ها = برگهٔ دفتر با نوار چسب */
+.panel,.card,.stat,.notice,.credentials,.circular-item,.school,.login{background-color:var(--surface)!important;border:1px solid var(--line)!important;border-radius:4px 20px 20px 20px!important;
+   box-shadow:0 2px 0 var(--line),0 14px 24px -14px rgba(90,60,10,.35)!important}
+.panel{position:relative}
+.panel::before{content:"";position:absolute;top:-10px;inset-inline-start:28px;width:72px;height:20px;background:rgba(255,222,120,.82);border:1px dashed rgba(160,120,20,.28);transform:rotate(-2.5deg);pointer-events:none;z-index:1}
+
+/* آمارها = یادداشت‌های رنگی */
+.stats .stat,.cards .card{color:#2f2a1e!important;border:0!important;border-radius:3px 3px 14px 3px!important;box-shadow:0 6px 12px -6px rgba(70,50,10,.4)!important;transform:rotate(-.7deg)}
+.stats .stat:nth-child(even),.cards .card:nth-child(even){transform:rotate(.8deg)}
+.stats .stat:nth-child(4n+1),.cards .card:nth-child(4n+1){background:#fff1a8!important}
+.stats .stat:nth-child(4n+2),.cards .card:nth-child(4n+2){background:#cdf1d9!important}
+.stats .stat:nth-child(4n+3),.cards .card:nth-child(4n+3){background:#ffd9df!important}
+.stats .stat:nth-child(4n+4),.cards .card:nth-child(4n+4){background:#d3e9ff!important}
+.stats .stat *,.cards .card *{color:#2f2a1e!important}
+
+/* دکمه‌ها */
+.primary,.primary-btn,.btn,.go{font-family:var(--school-font)!important;font-weight:400!important;font-size:1.08em;border-radius:12px!important;border:2px solid rgba(0,0,0,.14)!important;border-bottom-width:5px!important;box-shadow:none!important;transition:transform .12s,border-width .12s}
+.primary:active,.primary-btn:active,.btn:active,.go:active{transform:translateY(3px);border-bottom-width:2px!important}
+th{border-bottom:2px solid var(--wood)!important}
+
+/* منو: آیکن مدرسه‌ای + ماژیک */
+.menu-btn::before,.nav button::before{content:"📘";margin-inline-end:8px}
+.menu-btn[onclick*="'dashboard'"]::before,.nav button[onclick*="'dashboard'"]::before{content:"🏫"}
+.menu-btn[onclick*="'chat'"]::before,.nav button[onclick*="'chat'"]::before{content:"💬"}
+.menu-btn[onclick*="'notifications'"]::before,.nav button[onclick*="'notifications'"]::before{content:"🔔"}
+.menu-btn[onclick*="'teachers'"]::before,.nav button[onclick*="'teachers'"]::before{content:"👩‍🏫"}
+.menu-btn[onclick*="'students'"]::before,.nav button[onclick*="'students'"]::before{content:"🎒"}
+.menu-btn[onclick*="'parents'"]::before,.nav button[onclick*="'parents'"]::before{content:"👨‍👩‍👧"}
+.menu-btn[onclick*="'assignments'"]::before,.nav button[onclick*="'assignments'"]::before{content:"📚"}
+.menu-btn[onclick*="'schedule'"]::before,.nav button[onclick*="'schedule'"]::before{content:"🗓️"}
+.menu-btn[onclick*="'circulars'"]::before,.nav button[onclick*="'circulars'"]::before{content:"📜"}
+.menu-btn[onclick*="'academic-exams'"]::before,.nav button[onclick*="'academic-exams'"]::before{content:"📝"}
+.menu-btn[onclick*="'academic-attendance'"]::before,.nav button[onclick*="'academic-attendance'"]::before{content:"✅"}
+.menu-btn[onclick*="'academic-periodic'"]::before,.nav button[onclick*="'academic-periodic'"]::before{content:"📊"}
+.menu-btn[onclick*="'reports'"]::before,.nav button[onclick*="'reports'"]::before{content:"🧾"}
+.menu-btn[onclick*="'datareset'"]::before,.nav button[onclick*="'datareset'"]::before{content:"🧹"}
+.menu-btn[onclick*="'password'"]::before,.nav button[onclick*="'password'"]::before{content:"🔑"}
+.menu-btn[onclick*="'home'"]::before,.nav button[onclick*="'home'"]::before{content:"🏠"}
+.menu-btn[onclick*="'grades'"]::before,.nav button[onclick*="'grades'"]::before{content:"💯"}
+.menu-btn[onclick*="'exams'"]::before,.nav button[onclick*="'exams'"]::before{content:"📝"}
+.menu-btn[onclick*="'attendance'"]::before,.nav button[onclick*="'attendance'"]::before{content:"✅"}
+.menu-btn[onclick*="'homework'"]::before,.nav button[onclick*="'homework'"]::before{content:"✏️"}
+.menu-btn.active,.nav button.active{background:linear-gradient(transparent 14%,rgba(255,206,40,.75) 14% 86%,transparent 86%)!important;color:#3a2a00!important;box-shadow:none!important;border-radius:6px!important;font-weight:700!important}
+html[data-mode="dark"] .menu-btn.active,html[data-mode="dark"] .nav button.active{background:linear-gradient(transparent 14%,rgba(255,206,40,.38) 14% 86%,transparent 86%)!important;color:var(--chalk)!important}
+
+/* پنل والدین: کاشی‌ها آیکن مدرسه‌ای */
+html[data-look="parent"] .tile .ico{font-size:0!important}
+html[data-look="parent"] .tile .ico::before{font-size:30px;content:"📚"}
+html[data-look="parent"] .tile[onclick*="'schedule'"] .ico::before{content:"🗓️"}
+html[data-look="parent"] .tile[onclick*="'chat'"] .ico::before{content:"💬"}
+html[data-look="parent"] .tile[onclick*="'notifications'"] .ico::before{content:"🔔"}
+html[data-look="parent"] .tile[onclick*="'finance'"] .ico::before{content:"💰"}
+html[data-look="parent"] .tile[onclick*="'invoices'"] .ico::before{content:"🧾"}
+html[data-look="parent"] .tile[onclick*="'discounts'"] .ico::before{content:"🏷️"}
+html[data-look="parent"] .tile[onclick*="'reports'"] .ico::before{content:"📄"}
+
+/* صفحهٔ ورود: ساختمان مدرسه، دفتر خط‌دار و لوازم‌التحریر */
+.sheet{background-color:var(--surface)!important;background-image:repeating-linear-gradient(to bottom,transparent 0 33px,var(--ruled) 33px 34px)!important;border:1px solid var(--line)!important;border-radius:6px 26px 26px 26px!important;padding-right:62px!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+.sheet::before{display:block!important;content:"";position:absolute;top:0;bottom:0;right:44px;width:0;border-right:2px solid var(--margin);opacity:.85}
+.sheet header::before{width:176px!important;height:122px!important;border-radius:0!important;box-shadow:none!important;animation:none!important;margin:0 auto 6px!important;
+   background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -14 200 144'%3E%3Cellipse cx='100' cy='123' rx='94' ry='6' fill='%23000' opacity='.09'/%3E%3Crect x='13' y='84' width='5' height='36' fill='%237a5230'/%3E%3Ccircle cx='15.5' cy='80' r='15' fill='%234caf6a'/%3E%3Crect x='182' y='84' width='5' height='36' fill='%237a5230'/%3E%3Ccircle cx='184.5' cy='80' r='15' fill='%234caf6a'/%3E%3Crect x='34' y='66' width='132' height='55' fill='%23f3d9a4' stroke='%23c9a566' stroke-width='2'/%3E%3Cpolygon points='28,66 100,34 172,66' fill='%23c8553d' stroke='%239c3f2c' stroke-width='2'/%3E%3Crect x='82' y='20' width='36' height='46' fill='%23f3d9a4' stroke='%23c9a566' stroke-width='2'/%3E%3Cpolygon points='78,20 100,2 122,20' fill='%23c8553d' stroke='%239c3f2c' stroke-width='2'/%3E%3Cline x1='100' y1='2' x2='100' y2='-13' stroke='%236b5a45' stroke-width='1.6'/%3E%3Crect x='100' y='-13' width='15' height='3.4' fill='%23239f40'/%3E%3Crect x='100' y='-9.6' width='15' height='3.4' fill='%23fff'/%3E%3Crect x='100' y='-6.2' width='15' height='3.4' fill='%23da0000'/%3E%3Ccircle cx='100' cy='39' r='10' fill='%23fff' stroke='%23555' stroke-width='2'/%3E%3Cpath d='M100 39V32M100 39L105 42' stroke='%23555' stroke-width='2' stroke-linecap='round'/%3E%3Crect x='88' y='89' width='24' height='32' rx='2' fill='%237b4a2a'/%3E%3Ccircle cx='107' cy='106' r='1.8' fill='%23f3c969'/%3E%3Cg fill='%238fd0ee' stroke='%235e9bb7' stroke-width='1.4'%3E%3Crect x='46' y='79' width='14' height='17'/%3E%3Crect x='66' y='79' width='14' height='17'/%3E%3Crect x='120' y='79' width='14' height='17'/%3E%3Crect x='140' y='79' width='14' height='17'/%3E%3C/g%3E%3Crect x='80' y='119' width='40' height='4' fill='%23c9a566'/%3E%3C/svg%3E") center/contain no-repeat!important}
+.sheet h1{font-family:var(--school-font)!important;font-weight:400!important;font-size:34px!important}
+.login-logo{width:150px!important;height:105px!important;border-radius:0!important;box-shadow:none!important;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -14 200 144'%3E%3Cellipse cx='100' cy='123' rx='94' ry='6' fill='%23000' opacity='.09'/%3E%3Crect x='13' y='84' width='5' height='36' fill='%237a5230'/%3E%3Ccircle cx='15.5' cy='80' r='15' fill='%234caf6a'/%3E%3Crect x='182' y='84' width='5' height='36' fill='%237a5230'/%3E%3Ccircle cx='184.5' cy='80' r='15' fill='%234caf6a'/%3E%3Crect x='34' y='66' width='132' height='55' fill='%23f3d9a4' stroke='%23c9a566' stroke-width='2'/%3E%3Cpolygon points='28,66 100,34 172,66' fill='%23c8553d' stroke='%239c3f2c' stroke-width='2'/%3E%3Crect x='82' y='20' width='36' height='46' fill='%23f3d9a4' stroke='%23c9a566' stroke-width='2'/%3E%3Cpolygon points='78,20 100,2 122,20' fill='%23c8553d' stroke='%239c3f2c' stroke-width='2'/%3E%3Cline x1='100' y1='2' x2='100' y2='-13' stroke='%236b5a45' stroke-width='1.6'/%3E%3Crect x='100' y='-13' width='15' height='3.4' fill='%23239f40'/%3E%3Crect x='100' y='-9.6' width='15' height='3.4' fill='%23fff'/%3E%3Crect x='100' y='-6.2' width='15' height='3.4' fill='%23da0000'/%3E%3Ccircle cx='100' cy='39' r='10' fill='%23fff' stroke='%23555' stroke-width='2'/%3E%3Cpath d='M100 39V32M100 39L105 42' stroke='%23555' stroke-width='2' stroke-linecap='round'/%3E%3Crect x='88' y='89' width='24' height='32' rx='2' fill='%237b4a2a'/%3E%3Ccircle cx='107' cy='106' r='1.8' fill='%23f3c969'/%3E%3Cg fill='%238fd0ee' stroke='%235e9bb7' stroke-width='1.4'%3E%3Crect x='46' y='79' width='14' height='17'/%3E%3Crect x='66' y='79' width='14' height='17'/%3E%3Crect x='120' y='79' width='14' height='17'/%3E%3Crect x='140' y='79' width='14' height='17'/%3E%3C/g%3E%3Crect x='80' y='119' width='40' height='4' fill='%23c9a566'/%3E%3C/svg%3E") center/contain no-repeat!important}
+.login-logo svg,.login-logo::before,.login-logo::after{display:none!important}
+html[data-look="index"]::after{content:"✏️  📏  📚  🎒";position:fixed;left:14px;bottom:10px;font-size:24px;letter-spacing:8px;opacity:.55;pointer-events:none;z-index:0;animation:schoolFloat 5s ease-in-out infinite}
+@keyframes schoolFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@media(prefers-reduced-motion:reduce){html[data-look="index"]::after{animation:none}}
+
+/* ---- اصلاح‌های ظریف ---- */
+.top::after,.topbar::after{left:20px!important;right:auto!important;top:auto!important;bottom:-1px!important;width:96px!important;height:6px!important}
+.slfx-hero h2,.slfx-hero h2 *{color:#fff!important}
+.panel h3,.panel h2,.card h3{color:var(--ink)!important}
+html body .cards .card .card-value,html body .stats .stat strong{color:#2f2a1e!important}
+html[data-look="parent"] .tile[onclick*="logout"] .ico::before{content:"🚪"}
+html body .cards .card .card-value.card-value.card-value,html body .stats .stat strong.stat-value,html body .stats .stat strong:not(#x):not(#y){color:#2f2a1e!important}
+html[data-look="parent"] .school{background:linear-gradient(135deg,var(--board1),var(--board2))!important;color:var(--chalk)!important;border:0!important;border-bottom:5px solid var(--wood)!important}
+html[data-look="parent"] .school *{color:var(--chalk)!important}
