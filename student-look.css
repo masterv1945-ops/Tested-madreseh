@@ -211,6 +211,3 @@ html[data-mode="dark"][data-look="parent"] .tile{--cs:rgba(255,255,255,.08)}
 }
 @media(max-width:650px){.sidebar{position:static!important}}
 @media(max-width:850px){aside:not(.sidebar):not(.sl-rooms){position:static!important}}
-
-/* پیام‌رسان: در صفحهٔ باریک عنوان تکراری بالای کارت پنهان می‌شود تا جای بیشتری برای گفتگو بماند */
-@media(max-width:820px){#chat>.page-title,#chat>.page-description,#chat>.title,#chat>.desc{display:none!important}}
