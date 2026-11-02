@@ -1,0 +1,36 @@
+/* student-nav.css — چینش دکمه‌ها (کاشی‌ها و نوار پایین) دقیقاً مثل پنل دانش‌آموز؛ کلاس‌ها با پیشوند s- برای جلوگیری از تداخل */
+.s-head{display:flex;align-items:center;justify-content:space-between;margin:22px 4px 12px}
+.s-head h3{display:flex;align-items:center;gap:10px;margin:0;font-size:18px;font-weight:800}
+.s-chip{display:grid;place-items:center;width:38px;height:38px;flex:none;border-radius:13px;background:var(--cs,var(--teal-soft));color:var(--ci,var(--c,var(--brand-ink)));animation:chipIn .6s var(--spring) .15s backwards}
+.s-chip .svgico{width:22px;height:22px}
+.s-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.s-tile{position:relative;isolation:isolate;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;min-height:128px;padding:16px 8px;border:0;border-radius:24px;background:var(--surface);color:var(--ink);font-size:14px;font-weight:600;box-shadow:var(--shadow);transition:transform .35s var(--spring),box-shadow .3s ease;animation:tileIn .65s var(--spring) backwards;animation-delay:calc(var(--i,0)*65ms + 150ms)}
+.s-tile::before{content:"";position:absolute;left:-20%;right:-20%;bottom:-75%;height:100%;z-index:-1;border-radius:50%;background:var(--cs,var(--teal-soft));opacity:0;transform:scale(.6);transition:opacity .35s ease,transform .55s var(--ease)}
+.s-tile:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg)}
+.s-tile:hover::before{opacity:1;transform:scale(1)}
+.s-tile:active{transform:scale(.95)}
+.s-tile-ico{display:grid;place-items:center;width:60px;height:60px;border-radius:21px;background:var(--cs,var(--teal-soft));color:var(--ci,var(--c,var(--brand-ink)));transition:transform .45s var(--spring),background .3s ease,color .3s ease,box-shadow .3s ease}
+.s-tile-ico .svgico{width:31px;height:31px}
+.s-tile:hover .s-tile-ico{background:var(--c,var(--teal));background:linear-gradient(135deg,var(--c,var(--teal)),var(--c2,var(--teal2)));color:#fff;transform:translateY(-2px) rotate(-7deg) scale(1.08);box-shadow:0 12px 20px -8px var(--c,var(--teal))}
+.s-tile-label{line-height:1.4;text-align:center}
+.s-tabs{position:fixed;z-index:8;bottom:max(12px,var(--safe-bottom));left:12px;right:12px;display:flex;align-items:center;justify-content:space-around;gap:4px;min-height:72px;padding:7px;border:1px solid var(--glass-border);border-radius:28px;background:var(--glass);backdrop-filter:blur(14px) saturate(1.4);-webkit-backdrop-filter:blur(14px) saturate(1.4);box-shadow:0 14px 34px rgba(10,40,42,.24)}
+.s-pill{position:absolute;z-index:0;top:0;left:0;width:0;height:0;border-radius:22px;background:var(--brand-grad);box-shadow:0 8px 18px rgba(var(--brand-rgb),.45);opacity:0;transition:transform .5s var(--spring),width .5s var(--spring),height .3s ease,opacity .25s ease}
+.s-tab{position:relative;z-index:1;flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;padding:9px 4px;border:0;border-radius:22px;background:transparent;color:var(--tab-ink);font-size:11px;font-weight:600;transition:color .3s ease}
+.s-tab .svgico{width:24px;height:24px}
+.s-tab span{white-space:nowrap}
+.s-tab.active{color:#fff}
+.s-tab.active .svgico{animation:tabPop .55s var(--spring)}
+@media(min-width:700px){.s-tile{min-height:140px}
+.s-tabs{left:50%;right:auto;width:min(560px,calc(100% - 24px));transform:translateX(-50%)}}
+.s-tile .s-tile-ico{transition:transform .22s ease,box-shadow .22s ease,filter .22s ease!important}
+.s-tile:hover .s-tile-ico{transform:translateY(-2px) scale(1.06)}
+.s-tab{transition:color .2s ease,background .2s ease,box-shadow .2s ease,transform .2s ease!important}
+.s-tab:active{transform:scale(.94)}
+
+/* پنل معلم و والدین: همان قالب دانش‌آموز (ستون وسط، منوی کناری حذف) */
+.s-quick{margin-bottom:6px}
+html[data-look="teacher"] aside{display:none!important}
+html[data-look="teacher"] .layout{display:block!important}
+html[data-look="teacher"] .layout>main,html[data-look="teacher"] body .layout>main{max-width:900px!important;width:100%!important;margin:0 auto!important;padding:16px 16px 130px!important;box-sizing:border-box}
+html[data-look="parent"] .wrap{max-width:900px!important;margin-inline:auto!important;padding-bottom:130px!important}
+.s-tabs.hidden{display:none}
